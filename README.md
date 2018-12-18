@@ -167,9 +167,7 @@ A resource representing an individual generation.
 
 ## Type (object)
 + id: 12 (number, required)
-+ identifier: grass (string, required)
-
-    A string with the type in all lowercase.
++ identifier: grass (string, required) - A string with the type in all lowercase.
 
 ## TypeEfficacy (object)
 + id: 1 (number, required)
