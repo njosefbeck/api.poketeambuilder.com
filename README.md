@@ -22,62 +22,14 @@ A resource representing all pokemon in the system.
 List all pokemon. 
 
 + Response 200 (application/json)
-    
-    + Body
 
-            {
-              pokemon: [
-                {
-                  "id": 1,
-                  "identifier": "bulbasaur",
-                  "pokemonName": "Bulbasaur"
-                },
-                {
-                  "id": 2,
-                  "identifier": "ivysaur",
-                  "pokemonName": "Ivysaur"
-                },
-              ]
-            }
+    + Attributes
+        + pokemon: array[Pokemon]
 
 + Response 200 (application/json)
-    
-    + Body
 
-            {
-              pokemon: [
-                {
-                  "id": 1,
-                  "identifier": "bulbasaur",
-                  "pokemonName": "Bulbasaur",
-                  "types": [
-                    {
-                      "id": 12,
-                      "identifier": "grass"
-                    },
-                    {
-                      "id": 4,
-                      "identifier": "poison"
-                    }
-                  ]
-                },
-                {
-                  "id": 2,
-                  "identifier": "ivysaur",
-                  "pokemonName": "Ivysaur",
-                  "types": [
-                    {
-                      "id": 12,
-                      "identifier": "grass"
-                    },
-                    {
-                      "id": 4,
-                      "identifier": "poison"
-                    }
-                  ]
-                },
-              ]
-            }
+    + Attributes
+        + pokemon: array[PokemonWithTypes]
 
 ## Pokemon Individual [/pokemon/{id}{?types}]
 
@@ -95,42 +47,25 @@ List individual pokemon.
 
 + Response 200 (application/json)
 
-    + Body
-
-            {
-              "pokemon": {
-                "id": 1,
-                "identifier": "bulbasaur",
-                "pokemonName": "Bulbasaur"
-              }
-            }
+    + Attributes (Pokemon)
 
 + Response 200 (application/json)
 
-    + Body
-
-            {
-              "pokemon": {
-                "id": 1,
-                "identifier": "bulbasaur",
-                "pokemonName": "Bulbasaur",
-                "types": [
-                  {
-                    "id": 12,
-                    "identifier": "grass"
-                  },
-                  {
-                    "id": 4,
-                    "identifier": "poison"
-                  }
-                ]
-              }
-            }
-
+    + Attributes (PokemonWithTypes)
 
 # Group Types
 
 Resources related to types.
+
+## Types All [/types]
+
+A resource representing all types in the system.
+
+### List All Types [GET]
+
+List all types.
+
+## Types Individual [/types/{id}]
 
 # Group Type Efficacies
 
@@ -139,4 +74,24 @@ Resources related to [type efficacies](https://bulbapedia.bulbagarden.net/wiki/T
 # Group Generations
 
 Resources related to generations.
+
+# Data Structures
+
+## Pokemon (object)
++ id: 1 (number, required)
++ identifier: bulbasaur (string)
+
+    A string with two parts separated by a `:`. Both parts are all lower-case, and words are joined together by `-`. The first part is the Pokemon's English name, and the second part is it's form (ex: `venusaur:mega`). If no form present, then only the English name is returned.
+
++ pokemonName: Bulbasaur (string)
+
+## PokemonWithTypes (object)
++ Include Pokemon
++ types: [{ "id": 12, "identifier": "grass"}] (array[Type])
+
+## Type (object)
++ id: 12 (number, required)
++ identifier: grass (string)
+
+    A string with the type in all lowercase.
 
