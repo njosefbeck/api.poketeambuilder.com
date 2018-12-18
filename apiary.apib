@@ -80,6 +80,10 @@ List all types.
 
 A resource representing an individual type.
 
+### List individual type [GET]
+
+List individual type.
+
 + Parameters
 
     + id: 1 (number, required) - A unique identifier of the type.
@@ -119,6 +123,9 @@ List all efficacies.
     + Attributes
         + efficacies: array[TypeEfficacyWithIdentifiers]
 
+
+
+
 # Group Generations
 
 Resources related to generations.
@@ -144,10 +151,13 @@ A resource representing an individual generation.
 
     + id: 1 (number, required) - A unique identifier of the generation.
 
+### List Individual Generation [GET]
+
+List individual generation.
+
 + Response 200 (application/json)
 
-    + Attributes
-        + Generation
+    + Attributes (Generation)
 
 
 
