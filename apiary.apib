@@ -1,80 +1,187 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
 
-# poketeambuilder
+# api.poketeambuilder.com
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+The poketeambuilder API allows poketeambuilder.com to function and allows consumers to get the teams they've created. Follows the [API Blueprint](https://apiblueprint.org/) style for API documentation.
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+
+
+# Group Pokemon
+
+Resources related to pokemon.
+
+## Pokemon All [/pokemon{?types}]
+
+A resource representing all pokemon in the system.
+
++ Parameters
+
+    + types (boolean, optional) - Specify true to include pokemon type information in response.
+        + Default: `false`
+
+### List All Pokemon [GET]
+
+List all pokemon. 
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+    + Attributes
+        + pokemon: array[Pokemon]
 
-### Create a New Question [POST]
++ Response 200 (application/json)
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+    + Attributes
+        + pokemon: array[PokemonWithTypes]
 
-+ Request (application/json)
+## Pokemon Individual [/pokemon/{id}{?types}]
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+A resource representing an individual pokemon.
 
-+ Response 201 (application/json)
++ Parameters
 
-    + Headers
+    + id: 1 (number, required) - A unique identifier of the pokemon.
+    + types: true (boolean, optional) - Specify true to include pokemon type information in response.
+        + Default: `false`
 
-            Location: /questions/2
+### List individual Pokemon [GET]
 
-    + Body
+List individual pokemon.
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
++ Response 200 (application/json)
+
+    + Attributes (Pokemon)
+
++ Response 200 (application/json)
+
+    + Attributes (PokemonWithTypes)
+
+
+
+
+# Group Types
+
+Resources related to types.
+
+## Types All [/types]
+
+A resource representing all types in the system.
+
+### List All Types [GET]
+
+List all types.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + types: array[Type]
+
+## Types Individual [/types/{id}]
+
+A resource representing an individual type.
+
++ Parameters
+
+    + id: 1 (number, required) - A unique identifier of the type.
+
++ Response 200 (application/json)
+
+    + Attributes (Type)
+
+
+
+
+# Group Type Efficacies
+
+Resources related to [type efficacies](https://bulbapedia.bulbagarden.net/wiki/Type#Type_effectiveness).
+
+## Type Efficacies All [/type_efficacies{?generationId, typeIdentifiers}]
+
+A resource representing all type efficacies in the system.
+
++ Parameters
+
+    + generationId: 3 (number, optional) - A generation id. Without being specified, gets all generations.
+    + typeIdentifiers (boolean, optional) - Specify true to include pokemon type identifiers in response.
+        + Default: `false`
+
+### List All Efficacies [GET]
+
+List all efficacies.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + efficacies: array[TypeEfficacy]
+
++ Response 200 (application/json)
+
+    + Attributes
+        + efficacies: array[TypeEfficacyWithIdentifiers]
+
+# Group Generations
+
+Resources related to generations.
+
+## Generations All [/generations]
+
+A resource representing all generations in the system.
+
+### List All Generations [GET]
+
+List all generations.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + generations: array[Generation]
+
+## Generations Individual [/generations/{id}]
+
+A resource representing an individual generation.
+
++ Parameters
+
+    + id: 1 (number, required) - A unique identifier of the generation.
+
++ Response 200 (application/json)
+
+    + Attributes (Generation)
+
+
+
+
+# Data Structures
+
+## Pokemon (object)
++ id: 1 (number, required)
++ identifier: bulbasaur (string, required)
+
+    A string with two parts separated by a `:`. Both parts are all lower-case, and words are joined together by `-`. The first part is the Pokemon's English name, and the second part is its form (ex: `venusaur:mega`). If no form present, then only the English name is returned.
+
++ pokemonName: Bulbasaur (string, required)
+
+## PokemonWithTypes (object)
++ Include Pokemon
++ types (array[Type])
+
+## Type (object)
++ id: 12 (number, required)
++ identifier: grass (string, required) - A string with the type in all lowercase.
+
+## TypeEfficacy (object)
++ id: 1 (number, required)
++ atkTypeId: 1 (number, required)
++ defTypeId: 1 (number, required)
++ dmgModifier: 100 (number, required, nullable) - Values can only be 0, 100, 200 or `null`
++ generationId: 7 (number, required)
+
+## TypeEfficacyWithIdentifiers (object)
++ Include TypeEfficacy
++ atkTypeIdentifier: grass (string, required)
++ defTypeIdentifier: fire (string, required)
+
+## Generation (object)
++ id: 3 (number, required)
++ identifier: generation-iii (string, required)
+
