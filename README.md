@@ -25,59 +25,59 @@ List all pokemon.
     
     + Body
 
-        {
-          pokemon: [
             {
-              "id": 1,
-              "identifier": "bulbasaur",
-              "pokemonName": "Bulbasaur"
-            },
-            {
-              "id": 2,
-              "identifier": "ivysaur",
-              "pokemonName": "Ivysaur"
-            },
-          ]
-        }
+              pokemon: [
+                {
+                  "id": 1,
+                  "identifier": "bulbasaur",
+                  "pokemonName": "Bulbasaur"
+                },
+                {
+                  "id": 2,
+                  "identifier": "ivysaur",
+                  "pokemonName": "Ivysaur"
+                },
+              ]
+            }
 
 + Response 200 (application/json)
     
     + Body
 
-        {
-          pokemon: [
             {
-              "id": 1,
-              "identifier": "bulbasaur",
-              "pokemonName": "Bulbasaur",
-              "types": [
+              pokemon: [
                 {
-                  "id": 12,
-                  "identifier": "grass"
+                  "id": 1,
+                  "identifier": "bulbasaur",
+                  "pokemonName": "Bulbasaur",
+                  "types": [
+                    {
+                      "id": 12,
+                      "identifier": "grass"
+                    },
+                    {
+                      "id": 4,
+                      "identifier": "poison"
+                    }
+                  ]
                 },
                 {
-                  "id": 4,
-                  "identifier": "poison"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "identifier": "ivysaur",
-              "pokemonName": "Ivysaur",
-              "types": [
-                {
-                  "id": 12,
-                  "identifier": "grass"
+                  "id": 2,
+                  "identifier": "ivysaur",
+                  "pokemonName": "Ivysaur",
+                  "types": [
+                    {
+                      "id": 12,
+                      "identifier": "grass"
+                    },
+                    {
+                      "id": 4,
+                      "identifier": "poison"
+                    }
+                  ]
                 },
-                {
-                  "id": 4,
-                  "identifier": "poison"
-                }
               ]
-            },
-          ]
-        }
+            }
 
 ## Pokemon Individual [/pokemon/{id}{?types}]
 
@@ -97,35 +97,35 @@ List individual pokemon.
 
     + Body
 
-        {
-          "pokemon": {
-            "id": 1,
-            "identifier": "bulbasaur",
-            "pokemonName": "Bulbasaur"
-          }
-        }
+            {
+              "pokemon": {
+                "id": 1,
+                "identifier": "bulbasaur",
+                "pokemonName": "Bulbasaur"
+              }
+            }
 
 + Response 200 (application/json)
 
     + Body
 
-        {
-          "pokemon": {
-            "id": 1,
-            "identifier": "bulbasaur",
-            "pokemonName": "Bulbasaur",
-            "types": [
-              {
-                "id": 12,
-                "identifier": "grass"
-              },
-              {
-                "id": 4,
-                "identifier": "poison"
+            {
+              "pokemon": {
+                "id": 1,
+                "identifier": "bulbasaur",
+                "pokemonName": "Bulbasaur",
+                "types": [
+                  {
+                    "id": 12,
+                    "identifier": "grass"
+                  },
+                  {
+                    "id": 4,
+                    "identifier": "poison"
+                  }
+                ]
               }
-            ]
-          }
-        }
+            }
 
 
 # Group Types
