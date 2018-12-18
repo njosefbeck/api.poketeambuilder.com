@@ -29,7 +29,7 @@ List all pokemon.
     + Attributes
         + pokemon: array[Pokemon]
 
-+ Response 200 (application/json)
+    OR
 
     + Attributes
         + pokemon: array[PokemonWithTypes]
