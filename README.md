@@ -4,6 +4,9 @@ FORMAT: 1A
 
 The poketeambuilder API allows poketeambuilder.com to function and allows consumers to get the teams they've created. Follows the [API Blueprint](https://apiblueprint.org/) style for API documentation.
 
+
+
+
 # Group Pokemon
 
 Resources related to pokemon.
@@ -53,6 +56,9 @@ List individual pokemon.
 
     + Attributes (PokemonWithTypes)
 
+
+
+
 # Group Types
 
 Resources related to types.
@@ -67,13 +73,22 @@ List all types.
 
 ## Types Individual [/types/{id}]
 
+
+
+
 # Group Type Efficacies
 
 Resources related to [type efficacies](https://bulbapedia.bulbagarden.net/wiki/Type#Type_effectiveness).
 
+
+
+
 # Group Generations
 
 Resources related to generations.
+
+
+
 
 # Data Structures
 
@@ -87,7 +102,7 @@ Resources related to generations.
 
 ## PokemonWithTypes (object)
 + Include Pokemon
-+ types: [{ "id": 12, "identifier": "grass"}] (array[Type])
++ types: [{ "id": 12, "identifier": "grass"}, ...] (array[Type])
 
 ## Type (object)
 + id: 12 (number, required)
