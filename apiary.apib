@@ -27,12 +27,12 @@ List all pokemon.
 + Response 200 (application/json)
 
     + Attributes
-        + pokemon: array[Pokemon]
+        + pokemon (array[Pokemon])
 
 + Response 200 (application/json)
 
     + Attributes
-        + pokemon: array[PokemonWithTypes]
+        + pokemon (array[PokemonWithTypes])
 
 ## Pokemon Individual [/pokemon/{id}{?types}]
 
@@ -74,7 +74,7 @@ List all types.
 + Response 200 (application/json)
 
     + Attributes
-        + types: array[Type]
+        + types (array[Type])
 
 ## Types Individual [/types/{id}]
 
@@ -116,12 +116,12 @@ List all efficacies.
 + Response 200 (application/json)
 
     + Attributes
-        + efficacies: array[TypeEfficacy]
+        + efficacies (array[TypeEfficacy])
 
 + Response 200 (application/json)
 
     + Attributes
-        + efficacies: array[TypeEfficacyWithIdentifiers]
+        + efficacies (array[TypeEfficacyWithIdentifiers])
 
 
 
@@ -141,7 +141,7 @@ List all generations.
 + Response 200 (application/json)
 
     + Attributes
-        + generations: array[Generation]
+        + generations (array[Generation])
 
 ## Generations Individual [/generations/{id}]
 
