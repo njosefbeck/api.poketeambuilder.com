@@ -41,7 +41,7 @@ A resource representing an individual pokemon.
 + Parameters
 
     + id: 1 (number, required) - A unique identifier of the pokemon.
-    + types (boolean, optional) - Specify true to include pokemon type information in response.
+    + types: true (boolean, optional) - Specify true to include pokemon type information in response.
         + Default: `false`
 
 ### List individual Pokemon [GET]
@@ -71,7 +71,22 @@ A resource representing all types in the system.
 
 List all types.
 
++ Response 200 (application/json)
+
+    + Attributes
+        + types: array[Type]
+
 ## Types Individual [/types/{id}]
+
+A resource representing an individual type.
+
++ Parameters
+
+    + id: 1 (number, required) - A unique identifier of the type.
+
++ Response 200 (application/json)
+
+    + Attributes (Type)
 
 
 
@@ -80,12 +95,58 @@ List all types.
 
 Resources related to [type efficacies](https://bulbapedia.bulbagarden.net/wiki/Type#Type_effectiveness).
 
+## Type Efficacies All [/type_efficacies{?generationId, typeIdentifiers}]
 
+A resource representing all type efficacies in the system.
 
++ Parameters
+
+    + generationId: 3 (number, optional) - A generation id. Without being specified, gets all generations.
+    + typeIdentifiers (boolean, optional) - Specify true to include pokemon type identifiers in response.
+        + Default: `false`
+
+### List All Efficacies [GET]
+
+List all efficacies.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + efficacies: array[TypeEfficacy]
+
++ Response 200 (application/json)
+
+    + Attributes
+        + efficacies: array[TypeEfficacyWithIdentifiers]
 
 # Group Generations
 
 Resources related to generations.
+
+## Generations All [/generations]
+
+A resource representing all generations in the system.
+
+### List All Generations [GET]
+
+List all generations.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + generations: array[Generation]
+
+## Generations Individual [/generations/{id}]
+
+A resource representing an individual generation.
+
++ Parameters
+
+    + id: 1 (number, required) - A unique identifier of the generation.
+
++ Response 200 (application/json)
+
+    + Attributes (Generation)
 
 
 
@@ -94,19 +155,35 @@ Resources related to generations.
 
 ## Pokemon (object)
 + id: 1 (number, required)
-+ identifier: bulbasaur (string)
++ identifier: bulbasaur (string, required)
 
     A string with two parts separated by a `:`. Both parts are all lower-case, and words are joined together by `-`. The first part is the Pokemon's English name, and the second part is its form (ex: `venusaur:mega`). If no form present, then only the English name is returned.
 
-+ pokemonName: Bulbasaur (string)
++ pokemonName: Bulbasaur (string, required)
 
 ## PokemonWithTypes (object)
 + Include Pokemon
-+ types: [{ "id": 12, "identifier": "grass"}, ...] (array[Type])
++ types (array[Type])
 
 ## Type (object)
 + id: 12 (number, required)
-+ identifier: grass (string)
++ identifier: grass (string, required)
 
     A string with the type in all lowercase.
+
+## TypeEfficacy (object)
++ id: 1 (number, required)
++ atkTypeId: 1 (number, required)
++ defTypeId: 1 (number, required)
++ dmgModifier: 100 (number, required, nullable) - Values can only be 0, 100, 200 or `null`
++ generationId: 7 (number, required)
+
+## TypeEfficacyWithIdentifiers (object)
++ Include TypeEfficacy
++ atkTypeIdentifier: grass (string, required)
++ defTypeIdentifier: fire (string, required)
+
+## Generation (object)
++ id: 3 (number, required)
++ identifier: generation-iii (string, required)
 
