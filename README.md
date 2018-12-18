@@ -81,7 +81,7 @@ Resources related to generations.
 + id: 1 (number, required)
 + identifier: bulbasaur (string)
 
-    A string with two parts separated by a `:`. Both parts are all lower-case, and words are joined together by `-`. The first part is the Pokemon's English name, and the second part is it's form (ex: `venusaur:mega`). If no form present, then only the English name is returned.
+    A string with two parts separated by a `:`. Both parts are all lower-case, and words are joined together by `-`. The first part is the Pokemon's English name, and the second part is its form (ex: `venusaur:mega`). If no form present, then only the English name is returned.
 
 + pokemonName: Bulbasaur (string)
 
