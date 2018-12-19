@@ -3,5 +3,13 @@ const { Pool } = require('pg');
 const pool = new Pool();
 
 module.exports = {
-  query: (text, params) => pool.query(text, params)
+  async query(text, params) {
+    try {
+      const { rows } = await pool.query(text, params);
+      return rows;
+
+    } catch(e) {
+      throw e;
+    }
+  }
 };
